@@ -32,23 +32,26 @@ public class WordCount {
         TreeSet<String> letterSet = new TreeSet<>();
         LinkedList<String> letterList = new LinkedList<>();
         
-        String line = input.replaceAll("\\s", "");
-        String [] arr = line.split("(?!^)");
-        for (int i = 0; i < arr.length; i++){
-            letterList.add(arr[i]);
-            letterSet.add(arr[i]);
+        input = input.replaceAll("", " ");
+        StringTokenizer st = new StringTokenizer(input, " ");
+         
+        while (st.hasMoreElements()){
+            String letter = st.nextToken();
+            letterList.add(letter);
+            letterSet.add(letter);
         }
         
-        for (String letterS : letterSet) {
+        for (String letterS:letterSet){
             int count = 0;
-            for (String letterL : letterList) {
-                if (letterS.equals(letterL)) {
+            for (String letterL: letterList){
+                if(letterS.equals(letterL)){
                     count++;
                 }
             }
             letterMap.put(letterS, count);
         }
         printResult(letterMap, letterSet);
+        
     }
 
     static void printResult(Map<String, Integer> Map, TreeSet<String> Set) {
