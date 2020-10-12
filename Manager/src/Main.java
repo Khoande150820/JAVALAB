@@ -16,12 +16,16 @@ public class Main {
                     Manager.addWorker(workerList);
                     break;
                 case 2:
+                    System.out.println("Up salary: ");
                     Manager.changeSalary(workerList, "increase");
                     break;
                 case 3:
+                    System.out.println("Down salary: ");
                     Manager.changeSalary(workerList, "decrease");
                     break;
                 case 4:
+                    System.out.println("Display Information salary");
+                    Manager.displayInfo(workerList);
                     break;
                 case 5:
                     return;

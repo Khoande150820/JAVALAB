@@ -24,7 +24,7 @@ public class Validate {
         }
     }
 
-        static double validateDouble(double min, double max) {
+    static double validateDouble(double min, double max) {
         // loop until user input integer in rage min - max
         while (true) {
             try {
@@ -39,6 +39,7 @@ public class Validate {
             }
         }
     }
+
     public static String validateString() {
         // loop until user enter non empty string
         while (true) {
@@ -95,4 +96,14 @@ public class Validate {
             }
         }
     }
+
+    public static Worker getWorkerByCode(String id, ArrayList<Worker> workerList) {
+        for (Worker worker : workerList) {
+            if (worker.getId().equalsIgnoreCase(id)) {
+                return worker;
+            }
+        }
+        return null;
+    }
+
 }
