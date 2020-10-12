@@ -3,12 +3,13 @@ package util;
 public class Worker {
 
     String id, name, workLocation;
-    int age, salary;
+    int age;
+    double salary;
 
     Worker() {
     }
 
-    public Worker(String id, String name, int age, int salary, String workLocation) {
+    public Worker(String id, String name, int age, double salary, String workLocation) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -48,11 +49,11 @@ public class Worker {
         this.age = age;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
     
