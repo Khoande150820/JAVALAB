@@ -8,10 +8,21 @@ import java.util.Scanner;
 public class Main {
 
     static String getInput() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("Enter your content: ");
-        String result = sc.nextLine();
-        return result;
+        while (true) {
+            try {
+                Scanner sc = new Scanner(System.in);
+
+                String result = sc.nextLine();
+                if (result.isEmpty()) {
+                    throw new Exception();
+                }
+                return result;
+            } catch (Exception e) {
+                System.err.println("Please enter a string");
+                System.err.println("Enter your content:");
+            }
+        }
     }
 
     public static void main(String[] args) {
