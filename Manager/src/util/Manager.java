@@ -1,6 +1,9 @@
 package util;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Manager {
 
@@ -39,9 +42,10 @@ public class Manager {
         System.out.println("Add successful!");
     }
 
-    public static void changeSalary(ArrayList<Worker> workerList, String status) {
+    public static void changeSalary(ArrayList<Worker> workerList, String status, ArrayList<History> salaryHistory) {
         System.out.print("Enter code: ");
         String code = Validate.validateString();
+        String date = getCurrentDate();
         if (Validate.getWorkerByCode(code, workerList) == null) {
             System.out.println("No employee with such Id on the list!");
             return;
@@ -59,7 +63,9 @@ public class Manager {
                             throw new Exception();
                         }
                         worker.setSalary(newSalary);
+                        History history = new History("UP", date, worker.getId(), worker.getName(), worker.getAge(), worker.getSalary(), worker.getWorkLocation());
                         System.out.println("Successful");
+                        salaryHistory.add(history);
                         return;
                     } catch (Exception e) {
                         System.err.println("New salary must be greater than current salary!");
@@ -73,6 +79,8 @@ public class Manager {
                             throw new Exception();
                         }
                         worker.setSalary(newSalary);
+                        History history = new History("DOWN", date, worker.getId(), worker.getName(), worker.getAge(), worker.getSalary(), worker.getWorkLocation());
+                        salaryHistory.add(history);
                         System.out.println("Successful");
                         return;
                     } catch (Exception e) {
@@ -83,16 +91,25 @@ public class Manager {
             System.out.println("Update salary successful");
         }
     }
-    
-    
-    public static void displayInfo(ArrayList<Worker> workerList){
-        System.out.format("%5s %10s %2d %5f %15s", "Id", "Name", "Age", "Salary", "Work Location");
-        for (Worker worker: workerList){
-            System.out.format("%5s %10s %2d %5f %15s", worker.getId(), 
-                    worker.getName(), 
-                    worker.getAge(), 
-                    worker.getSalary(),
-                    worker.getWorkLocation());
+
+    public static String getCurrentDate() {
+        DateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar calendar = Calendar.getInstance();
+        return dateformat.format(calendar.getTime());
+    }
+
+    public static void displaySalaryHistory(ArrayList<History> salaryHistory) {
+        if (salaryHistory.isEmpty()) {
+            System.out.println("Empty");
         }
+
+        System.out.printf("%-5s%-15s%-5s%-10s%-10s%-20s\n", "Code", "Name", "Age",
+                "Salary", "Status", "Date");
+    }
+
+    public static void printHistory(History history) {
+        System.out.printf("%-5s%-15s%-5d%-10f%-10s%-20s\n", history.getId(),
+                history.getName(), history.getAge(), history.getSalary(),
+                history.getStatus(), history.getDate());
     }
 }
