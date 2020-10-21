@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import javafx.print.Collation;
 
 public class Manager {
 
@@ -53,7 +55,7 @@ public class Manager {
             Worker worker = Validate.getWorkerByCode(code, workerList);
             double oldSalary = worker.getSalary();
             double newSalary = 0;
-            System.out.print("Enter Salary");
+            System.out.print("Enter Salary: ");
             double changeAmount = Validate.validateSalary();
             if (status.equals("increase")) {
                 while (true) {
@@ -101,14 +103,19 @@ public class Manager {
     public static void displaySalaryHistory(ArrayList<History> salaryHistory) {
         if (salaryHistory.isEmpty()) {
             System.out.println("Empty");
+            return;
         }
 
         System.out.printf("%-5s%-15s%-5s%-10s%-10s%-20s\n", "Code", "Name", "Age",
                 "Salary", "Status", "Date");
+        Collections.sort(salaryHistory);
+        for (History h : salaryHistory){
+            printHistory(h);
+        }
     }
 
     public static void printHistory(History history) {
-        System.out.printf("%-5s%-15s%-5d%-10f%-10s%-20s\n", history.getId(),
+        System.out.printf("%-5s%-15s%-5d%-10.2f%-10s%-20s\n", history.getId(),
                 history.getName(), history.getAge(), history.getSalary(),
                 history.getStatus(), history.getDate());
     }

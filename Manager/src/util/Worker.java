@@ -56,6 +56,11 @@ public class Worker {
     public void setSalary(double salary) {
         this.salary = salary;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Worker{" + "id=" + id + ", name=" + name + ", workLocation=" + workLocation + ", age=" + age + ", salary=" + salary + '}';
+    }
+
     
 }

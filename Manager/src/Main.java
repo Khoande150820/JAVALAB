@@ -26,6 +26,13 @@ public class Main {
                     Manager.changeSalary(workerList, "decrease", salaryHistory);
                     break;
                 case 4:
+                    
+//                    for (Worker w: workerList){
+//                        System.out.println(w);
+//                    }
+//                            
+                            
+                            
                     System.out.println("Display Information salary");
                     Manager.displaySalaryHistory(salaryHistory);
                     break;
