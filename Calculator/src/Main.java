@@ -5,11 +5,18 @@
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        System.out.println("====Calculator Shape Program======");
+        // Step 1: Input Rectangle
+        Rectangle rectangle = Manage.getRectangle();
+        // Step 2: Input Circle
+        Circle circle = Manage.getCircle();
+        // Step 3: Input Triangle
+        Triangle triangle = Manage.getTriangle();
+        // Step 4: Display Result
+        Manage.display(rectangle, circle, triangle);
+        
     }
     
 }
