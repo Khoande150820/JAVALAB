@@ -4,7 +4,7 @@ public class Main {
     
     public static void main(String[] args) {
         System.out.println("The 45 sequence fibonacci: ");
-        displayFibonacci(10,0,1,1);
+        displayFibonacci(45,0,1,1);
         
     }
     
