@@ -35,13 +35,13 @@ public class Validate {
     }
 
     static String getBinary() {
-        final String BinaryPatter = "[0-1]*";
+        final String BinaryPattern = "[0-1]*";
         System.out.print("Enter binary number: ");
         while (true) {
             try {
                 Scanner sc = new Scanner(System.in);
                 String output = sc.nextLine();
-                if (output.matches(BinaryPatter) && !output.isEmpty()) {
+                if (output.matches(BinaryPattern) && !output.isEmpty()) {
                     return output;
                 } else {
                     throw new Exception();
@@ -56,13 +56,13 @@ public class Validate {
     }
 
     static String getHex() {
-        final String HexPatter = "[0-9A-F]*";
+        final String HexPattern = "[0-9A-F]*";
         System.out.print("Enter hexadecimal number: ");
         while (true) {
             try {
                 Scanner sc = new Scanner(System.in);
                 String output = sc.nextLine();
-                if (output.matches(HexPatter) && !output.isEmpty()) {
+                if (output.matches(HexPattern) && !output.isEmpty()) {
                     return output;
                 } else {
                     throw new Exception();

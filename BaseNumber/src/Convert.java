@@ -39,7 +39,7 @@ public class Convert {
 
     public static long convertHexToDec(String hex) {
         long result = 0;
-        int base = 16;
+        int base = 1;
 
         // Extracting character as digits starting from last char
         for (int i = hex.length() - 1; i >= 0; i--) {
