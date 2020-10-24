@@ -6,13 +6,13 @@ public class Main {
             int choice = Manager.menu();
             switch (choice) {
                 case 1:
-                    Validate.getBinary();
+                   Manager.decHandle();
                     break;
                 case 2:
-
+                    Manager.binaryHandle();
                     break;
                 case 3:
-
+                    Manager.hexHandle();
                     break;
                 case 4:
                     return;
