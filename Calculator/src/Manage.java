@@ -25,7 +25,7 @@ public class Manage {
             double a = getPositveNumber();
             System.out.println("Please input side B of Triangle:");
             double b = getPositveNumber();
-            System.out.println("Please input side C                                                                                                                                                                                                                                                          of Triangle:");
+            System.out.println("Please input side C of Triangle:");
             double c = getPositveNumber();
             if (a + b > c && b + c > a && a + c > b) {
                 return  new Triangle(a, b, c);
