@@ -26,15 +26,18 @@ public class Convert {
         String result;
         StringBuilder sb = new StringBuilder();
         while (dec > 0) {
+//            System.out.println(dec + " mod 2" );
             if (dec % 2 == 0) {
+//                System.out.println("0");
                 sb.append('0');
-//                System.out.println(sb.toString());
+//                System.out.println("Remaining: " + sb.toString());
             } else {
+//                System.out.println("1");
                 sb.append('1');
-//                System.out.println(sb.toString());
             }
-            dec = (dec - dec % 2) / 2;
             
+            dec = (dec - dec % 2) / 2;
+
         }
         result = sb.reverse().toString();
         return result;
@@ -43,6 +46,7 @@ public class Convert {
     public static long convertHexToDec(String hex) {
         long result = 0;
         int base = 1;
+        hex = hex.toUpperCase();
 
         // Extracting character as digits starting from last char
         for (int i = hex.length() - 1; i >= 0; i--) {

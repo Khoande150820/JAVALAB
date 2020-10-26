@@ -56,7 +56,7 @@ public class Validate {
     }
 
     static String getHex() {
-        final String HexPattern = "[0-9A-F]*";
+        final String HexPattern = "[0-9A-Fa-f]*";
         System.out.print("Enter hexadecimal number: ");
         while (true) {
             try {
