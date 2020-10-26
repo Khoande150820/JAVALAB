@@ -28,10 +28,13 @@ public class Convert {
         while (dec > 0) {
             if (dec % 2 == 0) {
                 sb.append('0');
+//                System.out.println(sb.toString());
             } else {
                 sb.append('1');
+//                System.out.println(sb.toString());
             }
             dec = (dec - dec % 2) / 2;
+            
         }
         result = sb.reverse().toString();
         return result;
@@ -58,14 +61,15 @@ public class Convert {
         StringBuilder sb = new StringBuilder();
 
         while (dec > 0) {
+            // if remaining is greater than 10, append character to result, else append the remaining number to result
             if (dec % 16 > 10) {
                 sb.append(dec % 16 + 48);
             } else {
                 sb.append(dec % 16 + 55);
             }
-            dec = (dec-dec%16)/16;
+            dec = (dec - dec % 16) / 16;
         }
-        
+
         result = sb.reverse().toString();
         return result;
     }
