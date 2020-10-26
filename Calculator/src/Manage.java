@@ -8,7 +8,7 @@ public class Manage {
             try {
                 Scanner sc = new Scanner(System.in);
                 double result = Double.parseDouble(sc.nextLine().trim());
-                if (result < 0) {
+                if (result <= 0) {
                     throw new Exception();
                 }
                 return result;
