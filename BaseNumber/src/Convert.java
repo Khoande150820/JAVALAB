@@ -12,7 +12,7 @@ public class Convert {
 
     public static long convertBinToDec(String bin) {
         long result = 0;
-        int base = 2;
+        int base = 1;
         for (int i = bin.length() - 1; i >= 0; i--) {
             result += base * (bin.charAt(i) - 48);
             base = base * 2;
