@@ -57,7 +57,7 @@ public class Matrix {
         if (matrix1.length == matrix2.length && matrix1[0].length == matrix2[0].length) {
             int[][] result = new int[matrix1.length][matrix1[0].length];
             for (int i = 0; i < matrix1.length; i++) {
-                for (int j = 0; j < matrix1[0].length; i++) {
+                for (int j = 0; j < matrix1[0].length; j++) {
                     result[i][j] = matrix1[i][j] - matrix2[i][j];
                 }
             }

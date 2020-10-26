@@ -15,7 +15,7 @@ public class Validate {
                 return result;
             } catch (NumberFormatException e) {
                 System.err.println("Please enter a number!");
-                System.out.print("Enter again: ");
+//                System.out.print("Enter again: ");
             }
         }
     }
