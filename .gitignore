@@ -10,3 +10,4 @@
 *.properties
 /Normalize/nbproject/private/
 /Normalize/build/
+*.xml
