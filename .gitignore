@@ -7,7 +7,6 @@
 /Calculator/build/
 /BaseNumber/nbproject/private/
 /BaseNumber/build/
-*.properties
+
 /Normalize/nbproject/private/
 /Normalize/build/
-*.xml
