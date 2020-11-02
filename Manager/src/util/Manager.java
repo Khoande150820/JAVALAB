@@ -56,13 +56,15 @@ public class Manager {
             double oldSalary = worker.getSalary();
             double newSalary = 0;
             System.out.print("Enter Salary: ");
-            double changeAmount = Validate.validateSalary();
+
             if (status.equals("increase")) {
                 while (true) {
                     try {
+                        double changeAmount = Validate.validateSalary();
                         newSalary = oldSalary + changeAmount;
                         if (newSalary == oldSalary) {
-                            throw new Exception();
+                            System.err.println("New salary must be greater than current salary!");
+                            System.out.print("Enter again: ");
                         }
                         worker.setSalary(newSalary);
                         History history = new History("UP", date, worker.getId(), worker.getName(), worker.getAge(), worker.getSalary(), worker.getWorkLocation());
@@ -70,23 +72,27 @@ public class Manager {
                         salaryHistory.add(history);
                         return;
                     } catch (Exception e) {
-                        System.err.println("New salary must be greater than current salary!");
+                        
                     }
                 }
             } else if (status.equals("decrease")) {
                 while (true) {
                     try {
+                        double changeAmount = Validate.validateSalary();
                         newSalary = oldSalary - changeAmount;
                         if (newSalary < 0) {
-                            throw new Exception();
+                            System.out.println("Amount decrease must be smaller than " + worker.getSalary());
+                            System.out.print("Enter again: ");
+                            continue;
+                        } else {
+                            worker.setSalary(newSalary);
+                            History history = new History("DOWN", date, worker.getId(), worker.getName(), worker.getAge(), worker.getSalary(), worker.getWorkLocation());
+                            salaryHistory.add(history);
+                            System.out.println("Successful");
+                            return;
                         }
-                        worker.setSalary(newSalary);
-                        History history = new History("DOWN", date, worker.getId(), worker.getName(), worker.getAge(), worker.getSalary(), worker.getWorkLocation());
-                        salaryHistory.add(history);
-                        System.out.println("Successful");
-                        return;
                     } catch (Exception e) {
-                        System.err.print("Salary decrease must be smaller than current salary!");
+
                     }
                 }
             }
@@ -109,7 +115,7 @@ public class Manager {
         System.out.printf("%-5s%-15s%-5s%-10s%-10s%-20s\n", "Code", "Name", "Age",
                 "Salary", "Status", "Date");
         Collections.sort(salaryHistory);
-        for (History h : salaryHistory){
+        for (History h : salaryHistory) {
             printHistory(h);
         }
     }
@@ -119,4 +125,5 @@ public class Manager {
                 history.getName(), history.getAge(), history.getSalary(),
                 history.getStatus(), history.getDate());
     }
+
 }
