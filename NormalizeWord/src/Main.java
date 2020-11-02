@@ -32,9 +32,9 @@ public class Main {
         if(isLastLine){
             pw.print(line);
         }
-        else if(line.length()!=0){
+        else {
             pw.println(line);
-        }
+        } 
 
     }
 
@@ -50,7 +50,6 @@ public class Main {
         String line = nextLine;
         boolean isLastLine = (nextLine == null);
         while(!isLastLine){
-//            System.out.println(line);
             line = Normalizer.formatOneSpace(line);
             line = Normalizer.formatSpecial(line);
             line = Normalizer.formatNoSpaceBeforeSpecialChar(line);

@@ -1,2 +1,2 @@
-w1|Khoa|23|1500.0|hanoi
-w2|Long|33|1988.0|sg
+w1|Khoa|23|1478.0|hanoi
+w2|Tu|20|1120.0|sg

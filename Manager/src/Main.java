@@ -64,7 +64,7 @@ public class Main {
 
             } catch (FileNotFoundException e) {
                 return new ArrayList<>();
-            } 
+            }
         }
     }
 
@@ -72,7 +72,14 @@ public class Main {
         File output = new File("workerData.txt");
         try (PrintWriter pw = new PrintWriter(output)) {
             for (Worker w : workerList) {
-                pw.println(w.getId() + "|" + w.getName() + "|" + w.getAge() + "|" + w.getSalary() + "|" + w.getWorkLocation());
+                int i = 0;
+                if (i == workerList.size() - 1) {
+                    pw.print(w.getId() + "|" + w.getName() + "|" + w.getAge() + "|" + w.getSalary() + "|" + w.getWorkLocation());
+                    
+                } else {
+                    pw.println(w.getId() + "|" + w.getName() + "|" + w.getAge() + "|" + w.getSalary() + "|" + w.getWorkLocation());
+                    i++;
+                }
             }
         }
     }
@@ -81,7 +88,13 @@ public class Main {
         File output = new File("historyData.txt");
         try (PrintWriter pw = new PrintWriter(output)) {
             for (History h : historyList) {
-                pw.println(h.getId() + "|" + h.getSalary() + "|" + h.getStatus() + "|" + h.getDate());
+                int i = 0;
+                if (i != historyList.size() - 1) {
+                    pw.println(h.getId() + "|" + h.getSalary() + "|" + h.getStatus() + "|" + h.getDate());
+                    i++;
+                } else {
+                    pw.print(h.getId() + "|" + h.getSalary() + "|" + h.getStatus() + "|" + h.getDate());
+                }
             }
         }
     }

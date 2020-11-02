@@ -1,5 +1,5 @@
 
-import com.sun.xml.internal.ws.util.StringUtils;
+
 import java.util.StringTokenizer;
 
 public class Normalizer {
@@ -96,7 +96,7 @@ public class Normalizer {
     
     static String formatFirstCharUpperCase(String line){
         if (!isEmptyLine(line)){
-            line = StringUtils.capitalize(line);
+            line = line.substring(0,1).toUpperCase() + line.substring(1);
             return line;
         }
         return line;
