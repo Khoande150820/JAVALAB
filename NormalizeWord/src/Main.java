@@ -31,7 +31,6 @@ public class Main {
         // If printing the final line, make sure there is no addtion blank line
         if(isLastLine){
             pw.print(line);
-
         }
         else if(line.length()!=0){
             pw.println(line);
@@ -51,17 +50,19 @@ public class Main {
         String line = nextLine;
         boolean isLastLine = (nextLine == null);
         while(!isLastLine){
-            System.out.println(line);
+//            System.out.println(line);
             line = Normalizer.formatOneSpace(line);
             line = Normalizer.formatSpecial(line);
             line = Normalizer.formatNoSpaceBeforeSpecialChar(line);
             line = Normalizer.noSpaceBetweenQuotes(line);
-            line = Normalizer.firstCharUpper(line);
+            line = Normalizer.formatFirstCharUpperCase(line);
+            line = Normalizer.addLastDot(line);
             nextLine = br.readLine();
             isLastLine = (nextLine == null);
             writeOutput(line, pw, isLastLine);
             line = nextLine;
         }
+        System.out.println("Normalize successfully......");
         pw.close();
         br.close();
 

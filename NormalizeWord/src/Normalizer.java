@@ -1,4 +1,5 @@
 
+import com.sun.xml.internal.ws.util.StringUtils;
 import java.util.StringTokenizer;
 
 public class Normalizer {
@@ -19,9 +20,11 @@ public class Normalizer {
     static String formatSpecial(String line) {
         line = line.toLowerCase();
         StringBuilder builder = new StringBuilder(line);
+
         // Iterate over each character in the line
         for (int i = 0; i < builder.length(); ++i) {
             char ch = builder.charAt(i);
+
             // if the special character is not at the end of the line
             if (isSpecialChar(ch) && i + 1 < builder.length()) {
                 // Insert a space after special character
@@ -52,7 +55,7 @@ public class Normalizer {
     }
 
     static boolean isSpecialChar(char ch) {
-        return (ch == '.') || (ch == ',') || (ch == ':') || (ch == '?');
+        return (ch == '.') || (ch == ',') || (ch == ':') || (ch == '?') || (ch == '!');
     }
 
     static boolean isEmptyLine(String line) {
@@ -68,8 +71,8 @@ public class Normalizer {
                     builder.deleteCharAt(i + 1);
                     countQuote++;
                 }
-            } else if (builder.charAt(i) == '"' && countQuote % 2 != 0){
-                if (builder.charAt(i-1) == ' '){
+            } else if (builder.charAt(i) == '"' && countQuote % 2 != 0) {
+                if (builder.charAt(i - 1) == ' ') {
                     builder.deleteCharAt(i - 1);
                     countQuote++;
                 }
@@ -79,6 +82,23 @@ public class Normalizer {
         return builder.toString().trim();
     }
 
-
-
+    static String addLastDot(String line) {
+        if (isEmptyLine(line)) {
+            return line;
+        } else {
+            if (line.endsWith(".") || line.endsWith("?") || line.endsWith("!")) {
+                return line;
+            } else {
+                return line + ".";
+            }
+        }
+    }
+    
+    static String formatFirstCharUpperCase(String line){
+        if (!isEmptyLine(line)){
+            line = StringUtils.capitalize(line);
+            return line;
+        }
+        return line;
+    }
 }
