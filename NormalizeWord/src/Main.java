@@ -40,15 +40,21 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
+        // Step 1: setup input and output
         BufferedReader br = getInputFile();
         if (br == null){
             return;
         }
 
         PrintWriter pw = getPrintWriter();
+
+        // Step 2: normalize the text
         String nextLine = br.readLine();
         String line = nextLine;
         boolean isLastLine = (nextLine == null);
+
+
+        // while last line has not been reach, normalize the text
         while(!isLastLine){
             line = Normalizer.formatOneSpace(line);
             line = Normalizer.formatSpecial(line);
