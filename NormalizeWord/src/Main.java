@@ -32,7 +32,8 @@ public class Main {
         if(isLastLine){
             pw.print(line);
         }
-        else {
+        // If the line is not empty then write to file
+        else if(line.length()!= 0){
             pw.println(line);
         } 
 
@@ -57,7 +58,7 @@ public class Main {
         // while last line has not been reach, normalize the text
         while(!isLastLine){
             line = Normalizer.formatOneSpace(line);
-            line = Normalizer.formatSpecial(line);
+            line = Normalizer.formatCase(line);
             line = Normalizer.formatNoSpaceBeforeSpecialChar(line);
             line = Normalizer.noSpaceBetweenQuotes(line);
             line = Normalizer.formatFirstCharUpperCase(line);

@@ -17,7 +17,7 @@ public class Normalizer {
         return builder.toString().trim();
     }
 
-    static String formatSpecial(String line) {
+    static String formatCase(String line) {
         line = line.toLowerCase();
         StringBuilder builder = new StringBuilder(line);
 
