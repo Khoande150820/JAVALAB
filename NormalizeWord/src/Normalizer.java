@@ -1,5 +1,4 @@
 
-
 import java.util.StringTokenizer;
 
 public class Normalizer {
@@ -32,7 +31,7 @@ public class Normalizer {
                     builder.insert(i + 1, ' ');
                 }
                 // The first character after a dot, question mark and exclamation mark must be Uppercase
-                if ((ch == '.' || ch == '?' || ch == '!') && i + 2 < builder.length()) {
+                if ((ch == '.') && i + 2 < builder.length()) {
                     char ch0 = builder.charAt(i + 2);
                     builder.setCharAt(i + 2, Character.toUpperCase(ch0));
                 }
@@ -66,6 +65,7 @@ public class Normalizer {
         int countQuote = 0;
         StringBuilder builder = new StringBuilder(line);
         for (int i = 0; i < builder.length(); i++) {
+
             if (builder.charAt(i) == '"' && countQuote % 2 == 0) {
                 if (builder.charAt(i + 1) == ' ') {
                     builder.deleteCharAt(i + 1);
@@ -86,17 +86,17 @@ public class Normalizer {
         if (isEmptyLine(line)) {
             return line;
         } else {
-            if (line.endsWith(".") || line.endsWith("?") || line.endsWith("!")) {
+            if (line.endsWith(".")) {
                 return line;
             } else {
                 return line + ".";
             }
         }
     }
-    
-    static String formatFirstCharUpperCase(String line){
-        if (!isEmptyLine(line)){
-            line = line.substring(0,1).toUpperCase() + line.substring(1);
+
+    static String formatFirstCharUpperCase(String line) {
+        if (!isEmptyLine(line)) {
+            line = line.substring(0, 1).toUpperCase() + line.substring(1);
             return line;
         }
         return line;
