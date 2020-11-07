@@ -3,3 +3,5 @@ as you can see , detecting whether a string is normalized can be quite efficient
 
  As it turns out, these buffers are rarely needed, so we may change the implementation at some point to speed up the common case for small strings even further
 test" quotes "test
+" quotes " test
+test " quotes " test

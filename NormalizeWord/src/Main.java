@@ -60,7 +60,7 @@ public class Main {
             line = Normalizer.formatOneSpace(line);
             line = Normalizer.formatCase(line);
             line = Normalizer.formatNoSpaceBeforeSpecialChar(line);
-            line = Normalizer.noSpaceBetweenQuotes(line);
+            line = Normalizer.formatQuotes(line);
             line = Normalizer.formatFirstCharUpperCase(line);
             line = Normalizer.addLastDot(line);
             nextLine = br.readLine();

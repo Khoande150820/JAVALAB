@@ -54,27 +54,41 @@ public class Normalizer {
     }
 
     static boolean isSpecialChar(char ch) {
-        return (ch == '.') || (ch == ',') || (ch == ':') || (ch == '?') || (ch == '!');
+        return (ch == '.') || (ch == ',');
     }
 
     static boolean isEmptyLine(String line) {
         return line.length() == 0;
     }
 
-    static String noSpaceBetweenQuotes(String line) {
+    static String formatQuotes(String line) {
         int countQuote = 0;
         StringBuilder builder = new StringBuilder(line);
-        for (int i = 0; i < builder.length(); i++) {
 
-            if (builder.charAt(i) == '"' && countQuote % 2 == 0) {
-                if (builder.charAt(i + 1) == ' ') {
-                    builder.deleteCharAt(i + 1);
-                    countQuote++;
-                }
-            } else if (builder.charAt(i) == '"' && countQuote % 2 != 0) {
-                if (builder.charAt(i - 1) == ' ') {
-                    builder.deleteCharAt(i - 1);
-                    countQuote++;
+        for (int i = 0; i < builder.length(); i++) {
+            if(builder.charAt(i) == '"'){
+                countQuote ++;
+                if(countQuote%2 == 1){
+                    if(i>0){
+                        if(!Character.isWhitespace(builder.charAt(i-1))){
+                            builder.insert(i, ' ');
+                            i++;
+                        }
+                    }
+                    if(i+1<builder.length()){
+                        if(Character.isWhitespace(builder.charAt(i+1))){
+                            builder.deleteCharAt(i+1);
+                        }
+                    }
+                } else {
+                    if(i+1<builder.length()){
+                        if(!Character.isWhitespace(builder.charAt(i+1))){
+                            builder.insert(i+1, ' ');
+                        }
+                    }
+                    if (Character.isWhitespace(builder.charAt(i-1))){
+                        builder.deleteCharAt(i-1);
+                    }
                 }
             }
         }
