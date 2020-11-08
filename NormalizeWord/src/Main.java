@@ -27,9 +27,9 @@ public class Main {
     }
 
     // Function to write to output file
-    static void writeOutput(String line, PrintWriter pw, boolean isLastLine){
+    static void writeOutput(String line, PrintWriter pw, String nextLine){
         // If printing the final line, make sure there is no addtion blank line
-        if(isLastLine){
+        if(nextLine == null){
             pw.print(line);
         }
         // If the line is not empty then write to file
@@ -56,7 +56,7 @@ public class Main {
 
 
         // while last line has not been reach, normalize the text
-        while(!isLastLine){
+        while(nextLine!=null){
             line = Normalizer.formatOneSpace(line);
             line = Normalizer.formatCase(line);
             line = Normalizer.formatNoSpaceBeforeSpecialChar(line);
@@ -65,7 +65,7 @@ public class Main {
             line = Normalizer.addLastDot(line);
             nextLine = br.readLine();
             isLastLine = (nextLine == null);
-            writeOutput(line, pw, isLastLine);
+            writeOutput(line, pw, nextLine);
             line = nextLine;
         }
         System.out.println("Normalize successfully......");
