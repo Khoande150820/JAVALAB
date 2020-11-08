@@ -1,5 +1,9 @@
+Only one space between words.
+Only one space after comma, dot. And colon: word. First character of word after dot is uppercase and other words are in lower case.
+There are "no space before" and after sentence "or quotes phrases" in quotes.
+First character of word in first line is in uppercase.
+There are no blanks line between lines.
+There are no space between comma, or dot. And word in front of it.
+Must have dot at the end of text.
 As you can see, detecting whether a string is normalized can be quite efficient. A lot of the cost of normalizing in the “second row” is for the initialization of buffers. The cost of which is amortized when one is processing larger strings.
 As it turns out, these buffers are rarely needed, so we may change the implementation at some point to speed up the common case for small strings even further.
-Test "quotes" test.
-"quotes" test.
-Test "quotes" test.

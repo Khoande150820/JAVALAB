@@ -54,7 +54,7 @@ public class Normalizer {
     }
 
     static boolean isSpecialChar(char ch) {
-        return (ch == '.') || (ch == ',');
+        return (ch == '.') || (ch == ',') || (ch == ':');
     }
 
     static boolean isEmptyLine(String line) {

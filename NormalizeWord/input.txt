@@ -1,7 +1,11 @@
-as you can see , detecting whether a string is normalized can be quite efficient. A lot of the cost of normalizing in the “second row” is for the initialization of buffers. The cost of which is amortized when one is processing larger strings.
+only   one space    between   words.
+only one space after comma ,   dot . and colon  :  word . first character of word after dot is uppercase and other words are in lower case
+there are" no space before "and after sentence " or quotes phrases " in quotes 
+first character of word in first line is in uppercase
 
 
+there are no blanks line between lines
+there are no space between comma , or dot . and word in front of it
+must have dot at the end of text
+as you can see, detecting whether a string is normalized can be quite efficient. A lot of the cost of normalizing in the “second row” is for the initialization of buffers. The cost of which is amortized when one is processing larger strings.
  As it turns out, these buffers are rarely needed, so we may change the implementation at some point to speed up the common case for small strings even further
-test" quotes "test
-" quotes " test
-test " quotes " test
