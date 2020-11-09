@@ -16,6 +16,18 @@ public class Normalize {
         return builder.toString().trim();
     }
 
+    static String formatOneSpaceAfterSpecialChar(String line){
+        StringBuilder builder = new StringBuilder(line);
+        for (int i = 0; i < builder.length(); i++) {
+            if(isSpecialChar(builder.charAt(i)) && i+1<builder.length()){
+                if(!Character.isWhitespace(builder.charAt(i+1))){
+                    builder.insert(i + 1, ' ');
+                }
+            }
+        }
+        return builder.toString();
+    }
+    
     // Capitalize neccesary character
     static String formatCase(String line) {
         line = line.toLowerCase();
@@ -27,10 +39,7 @@ public class Normalize {
 
             // if the special character is not at the end of the line
             if (isSpecialChar(ch) && i + 1 < builder.length()) {
-                // Insert a space after special character
-                if (!Character.isWhitespace(builder.charAt(i + 1))) {
-                    builder.insert(i + 1, ' ');
-                }
+
                 // The first character after a dot, question mark and exclamation mark must be Uppercase
                 if ((ch == '.') && i + 2 < builder.length()) {
                     char ch0 = builder.charAt(i + 2);
@@ -51,6 +60,7 @@ public class Normalize {
             if (Character.isWhitespace(builder.charAt(i)) && isSpecialChar(builder.charAt(i + 1))) {
                 builder.deleteCharAt(i);
             }
+            
         }
         return builder.toString();
     }

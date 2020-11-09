@@ -1,5 +1,5 @@
 only   one space    between   words.
-only one space after comma ,   dot . and colon  :  word . first character of word after dot is uppercase and other words are in lower case
+only one space after comma ,dot .and colon  :  word . first character of word after dot is uppercase and other words are in lower case
 there are" no space before "and after sentence " or quotes phrases " in quotes 
 first character of word in first line is in uppercase
 
