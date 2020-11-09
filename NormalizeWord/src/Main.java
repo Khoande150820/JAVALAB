@@ -57,12 +57,12 @@ public class Main {
 
         // while last line has not been reach, normalize the text
         while(nextLine!=null){
-            line = Normalizer.formatOneSpace(line);
-            line = Normalizer.formatCase(line);
-            line = Normalizer.formatNoSpaceBeforeSpecialChar(line);
-            line = Normalizer.formatQuotes(line);
-            line = Normalizer.formatFirstCharUpperCase(line);
-            line = Normalizer.addLastDot(line);
+            line = Normalize.formatOneSpace(line);
+            line = Normalize.formatCase(line);
+            line = Normalize.formatNoSpaceBeforeSpecialChar(line);
+            line = Normalize.formatQuotes(line);
+            line = Normalize.formatFirstCharUpperCase(line);
+            line = Normalize.addLastDot(line);
             nextLine = br.readLine();
             isLastLine = (nextLine == null);
             writeOutput(line, pw, nextLine);
