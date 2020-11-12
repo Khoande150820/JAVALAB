@@ -49,7 +49,7 @@ public class Main {
         // Step 2: normalize the text
         String nextLine = br.readLine();
         String line = nextLine;
-        boolean isLastLine = (nextLine == null);
+    
 
         // while last line has not been reach, normalize the text
         while (nextLine != null) {
@@ -61,7 +61,6 @@ public class Main {
             line = Normalize.formatFirstCharUpperCase(line);
             line = Normalize.addLastDot(line);
             nextLine = br.readLine();
-            isLastLine = (nextLine == null);
             writeOutput(line, pw, nextLine);
             line = nextLine;
         }
