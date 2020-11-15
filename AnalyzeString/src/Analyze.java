@@ -9,6 +9,7 @@ public class Analyze {
         ArrayList<Integer> numberList = new ArrayList<>();
         // replace all non digit character with comma
         String number = input.replaceAll("\\D+", ",");
+        // Remove the begin and end comma (if has any) in the string
         if (number.length() > 1) {
             if (number.charAt(0) == ',') {
                 number = number.substring(1);
