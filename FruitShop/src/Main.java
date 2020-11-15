@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // Loop until user select exit
         ArrayList<Fruit> fruitList = Manager.loadFruitList();
-        Hashtable<String, ArrayList<Fruit>> orderTable = new Hashtable<>();
+        Hashtable<String, ArrayList<Fruit>> orderTable = Manager.loadOrderList(fruitList);
         while(true){
             int choice = Manager.menu();
             switch(choice){

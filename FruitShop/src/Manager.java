@@ -42,6 +42,37 @@ public class Manager {
         pw.close();
     }
 
+    static Hashtable<String, ArrayList<Fruit>> loadOrderList(ArrayList<Fruit> fruitList) throws IOException {
+        Hashtable<String, ArrayList<Fruit>> orderList = new Hashtable<>();
+        FileReader fr = new FileReader("order.txt");
+        BufferedReader br = new BufferedReader(fr);
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] arrOfString = line.split(";");
+            String name = arrOfString[0];
+            if (!orderList.containsKey(name)) {
+                ArrayList<Fruit> fruitOrder = new ArrayList<>();
+                String fruitID = arrOfString[1];
+                Fruit f = findByID(fruitList, fruitID);
+                String fruitName = f.getFruitname();
+                int quantity = Integer.parseInt(arrOfString[2]);
+                String fruitOrigin = f.getFruitOrigin();
+                double price = f.getFruitPrice();
+                fruitOrder.add(new Fruit(fruitID, fruitName, price, quantity, fruitOrigin));
+            } else {
+                ArrayList<Fruit> fruitOrder = orderList.get(name);
+                String fruitID = arrOfString[1];
+                Fruit f = findByID(fruitList, fruitID);
+                String fruitName = f.getFruitname();
+                int quantity = Integer.parseInt(arrOfString[2]);
+                String fruitOrigin = f.getFruitOrigin();
+                double price = f.getFruitPrice();
+                fruitOrder.add(new Fruit(fruitID, fruitName, price, quantity, fruitOrigin));
+            }
+        }
+        return orderList;
+    }
+
     static int menu() {
         System.out.println("");
         System.out.println("");
@@ -53,6 +84,15 @@ public class Manager {
         System.out.println("4. Exit");
         System.out.print("Your choice: ");
         return Validate.getInputByLimit(1, 4);
+    }
+
+    static Fruit findByID(ArrayList<Fruit> fruitList, String id) {
+        for (Fruit f : fruitList) {
+            if (f.getFruitID().equalsIgnoreCase(id)) {
+                return f;
+            }
+        }
+        return null;
     }
 
     static void createFruit(ArrayList<Fruit> fruitList) {
@@ -90,20 +130,18 @@ public class Manager {
             }
         }
     }
-    
-    static void displayOrderedList(ArrayList<Fruit> orderedList){
+
+    static void displayOrderedList(ArrayList<Fruit> orderedList) {
         System.out.printf("%-15s%-15s%-15s%-5s\n", "Product", "Quantity", "Price", "Amount");
-        for(Fruit fruit:orderedList){
-            double amount = fruit.getFruitQuantity()*fruit.getFruitPrice();
-            System.out.printf("%-15s%-15d%-15.0f%-15.0f\n", fruit.getFruitname(), fruit.getFruitQuantity(),fruit.getFruitPrice(), amount);
+        for (Fruit fruit : orderedList) {
+            double amount = fruit.getFruitQuantity() * fruit.getFruitPrice();
+            System.out.printf("%-15s%-15d%-15.0f%-15.0f\n", fruit.getFruitname(), fruit.getFruitQuantity(), fruit.getFruitPrice(), amount);
         }
     }
-    
-    
-    
-    static void viewOrder(Hashtable<String, ArrayList<Fruit>> orderedTable){
-        for(String name: orderedTable.keySet()){
-            System.out.println("Customer: "+ name);
+
+    static void viewOrder(Hashtable<String, ArrayList<Fruit>> orderedTable) {
+        for (String name : orderedTable.keySet()) {
+            System.out.println("Customer: " + name);
             ArrayList<Fruit> order = orderedTable.get(name);
             displayOrderedList(order);
         }
@@ -112,10 +150,10 @@ public class Manager {
     static Fruit getFruitByItem(int item, ArrayList<Fruit> fruitList) {
         int itemCount = 0;
         for (Fruit fruit : fruitList) {
-            if(fruit.getFruitQuantity()>0){
+            if (fruit.getFruitQuantity() > 0) {
                 itemCount++;
             }
-            if(item == itemCount){
+            if (item == itemCount) {
                 return fruit;
             }
         }
@@ -132,14 +170,14 @@ public class Manager {
             System.out.println("You selected: " + fruit.getFruitname());
             System.out.println("Please input quantity");
             int quantity = Validate.getInputByLimit(1, fruit.getFruitQuantity());
-            fruit.setFruitQuantity(fruit.getFruitQuantity()-quantity);
-            orderedFruit.add(new Fruit(fruit.getFruitID(), fruit.getFruitname(),fruit.getFruitPrice(), quantity, fruit.getFruitOrigin()));
+            fruit.setFruitQuantity(fruit.getFruitQuantity() - quantity);
+            orderedFruit.add(new Fruit(fruit.getFruitID(), fruit.getFruitname(), fruit.getFruitPrice(), quantity, fruit.getFruitOrigin()));
             System.out.print("Do you want to order now (Y/N): ");
-            if(Validate.getInputYN()){
+            if (Validate.getInputYN()) {
                 displayOrderedList(orderedFruit);
                 double totalAmount = 0;
-                for (Fruit f: orderedFruit){
-                    totalAmount+= f.getFruitPrice()*f.getFruitQuantity();
+                for (Fruit f : orderedFruit) {
+                    totalAmount += f.getFruitPrice() * f.getFruitQuantity();
                 }
                 System.out.println("Total amount: " + totalAmount);
                 System.out.print("Input your name: ");
