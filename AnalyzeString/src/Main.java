@@ -1,21 +1,32 @@
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 
 public class Main {
 
     public static void main(String[] args) {
+        // Step 1: create variable to store output
+        HashMap<String, ArrayList<Integer>> AnalyzedNumber = new HashMap<>();
+        HashMap<String, String> AnalyzedString =  new HashMap<>();
         
-        // Step 1: Reead string
-        String input = "144sdhkjDFGH!@#$%^22fdsf3";
-        int [] number = Analyze.getNumber(input);
-        System.out.println(Arrays.toString(number));
-        Analyze.getOddNumber(number);
-        Analyze.getEvenNumber(number);
-        Analyze.getPerfectSquare(number);
-        Analyze.getUpperCase(input);
-        Analyze.getLowerCase(input);
-        Analyze.getSpecialChar(input);
+        // Step 2: Get input
+        System.out.print("Input String: ");
+        String input = Validate.validateString();
+        
+        // Step 3: Analyzed input and add result to hashmap
+        Analyze.getAllNumber(input, AnalyzedNumber);
+        Analyze.getOddNumber(AnalyzedNumber);
+        Analyze.getEvenNumber(AnalyzedNumber);
+        Analyze.getPerfectSquare(AnalyzedNumber);
+        Analyze.getUpperCase(input, AnalyzedString);
+        Analyze.getLowerCase(input, AnalyzedString);
+        Analyze.getSpecialChar(input, AnalyzedString);
+        
+        // Step 4: Display result
+        Analyze.displayResult(input, AnalyzedNumber, AnalyzedString);
+        
     }
     
 }
