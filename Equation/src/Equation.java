@@ -51,26 +51,36 @@ public class Equation {
         ArrayList<Float> perfectSquareNumber = new ArrayList<>();
         ArrayList<Float> numberList = new ArrayList<>();
         float a = Validate.getCoef("A");
-        if (a == 0) {
-            System.out.println("A cannot be 0");
-            return;
-        }
         float b = Validate.getCoef("B");
         float c = Validate.getCoef("C");
         numberList.add(a);
         numberList.add(b);
         numberList.add(c);
-        float delta = b * b - 4 * a * c;
-        if (delta < 0) {
-            System.out.println("Solution: no solution");
-        } else if (delta == 0) {
-            float solution = -b / (2 * a);
-            numberList.add(solution);
+        if (a == 0) {
+            if (b == 0 && c == 0) {
+                System.out.println("Solution: Infinite solution");
+            } else if (b == 0 && c != 0) {
+                System.out.println("Solution: No solution");
+            } else if (b != 0 && c != 0) {
+                float solution = -b / c;
+                System.out.println("Solution: " + solution);
+                numberList.add(solution);
+            }
         } else {
-            float solution1 = (-b - (float) Math.sqrt(delta)) / (2 * a);
-            float solution2 = (-b + (float) Math.sqrt(delta)) / (2 * a);
-            numberList.add(solution1);
-            numberList.add(solution2);
+            float delta = b * b - 4 * a * c;
+            if (delta < 0) {
+                System.out.println("Solution: no solution");
+            } else if (delta == 0) {
+                float solution = -b / (2 * a);
+                System.out.println("Solution: " + solution);
+                numberList.add(solution);
+            } else {
+                float solution1 = (-b - (float) Math.sqrt(delta)) / (2 * a);
+                float solution2 = (-b + (float) Math.sqrt(delta)) / (2 * a);
+                System.out.println("Solution: " + solution1 + ", " + solution2);
+                numberList.add(solution1);
+                numberList.add(solution2);
+            }
         }
         for (float number : numberList) {
             if (Validate.isEven(number)) {
