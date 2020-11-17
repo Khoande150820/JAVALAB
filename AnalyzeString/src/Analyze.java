@@ -84,7 +84,7 @@ public class Analyze {
     }
 
     static void printList(ArrayList<Integer> numberList) {
-        if (numberList.size()==0) {
+        if (numberList.isEmpty()) {
             System.out.println("No result");
             return;
         }
