@@ -35,7 +35,7 @@ public class Validate {
         }
     }
 
-    static boolean isEven(double a) {
+    static boolean isEven(float a) {
         return a % 2 == 0;
     }
 
